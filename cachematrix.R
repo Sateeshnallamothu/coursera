@@ -7,12 +7,13 @@ makeCacheMatrix <- function(x = matrix()) {
   ## initialize the cache variable 
   matinv = NULL
   ##  setmat to store the matrix in the environment other than local. use <<- operator
+  ## but this function is obsolete as we never going to call. we can still use the main function with 
+  ## out setmat().
   setmat <- function(y) {
     x <<- y
     matinv <<- NULL
   }
-  message("setting matrix")
-  message(x)
+   
   ## getmat will retrieve the matrix from memory
   getmat <- function() x
   ## setinv will set store the matrix inverse in memory 
@@ -45,5 +46,5 @@ cacheSolve <- function(x, ...) {
   mat <- x$getmat()
   matinv <- solve(mat, ...)
   x$setinv(matinv)
-  matinv
+  return(matinv)
 }
